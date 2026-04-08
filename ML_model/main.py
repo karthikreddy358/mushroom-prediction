@@ -11,10 +11,13 @@ from torchvision import datasets, models, transforms
 from torchvision.models import ResNet18_Weights
 
 
-TRAIN_DIR = r"D:\mushroom-prediction\data\train"
-TEST_DIR = r"D:\mushroom-prediction\data\test"
-MODEL_DIR = r"D:\mushroom-prediction\models"
-MODEL_PATH = r"D:\mushroom-prediction\models\model.pkl"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
+
+TRAIN_DIR = os.getenv("TRAIN_DIR", os.path.join(PROJECT_ROOT, "data", "train"))
+TEST_DIR = os.getenv("TEST_DIR", os.path.join(PROJECT_ROOT, "data", "test"))
+MODEL_DIR = os.getenv("MODEL_DIR", os.path.join(BASE_DIR, "models"))
+MODEL_PATH = os.getenv("MODEL_PATH", os.path.join(MODEL_DIR, "model.pkl"))
 
 IMAGE_SIZE = 224
 BATCH_SIZE = 32

@@ -1,1 +1,0 @@
-# Smart Mushroom AI Backend
