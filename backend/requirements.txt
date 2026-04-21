@@ -5,3 +5,6 @@ cloudinary
 itsdangerous
 Werkzeug
 gunicorn
+torch
+torchvision
+Pillow
