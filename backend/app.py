@@ -7,7 +7,15 @@ from routes.predict_routes import predict_bp
 from utils.helper import ensure_upload_folder
 
 app = Flask(__name__)
-CORS(app)
+
+# Configure CORS from environment for production deployments (e.g., Render).
+# Example: CORS_ORIGINS=https://your-frontend.onrender.com,http://localhost:5173
+cors_origins = os.getenv("CORS_ORIGINS", "").strip()
+if cors_origins:
+    allowed_origins = [origin.strip() for origin in cors_origins.split(",") if origin.strip()]
+    CORS(app, resources={r"/api/*": {"origins": allowed_origins}})
+else:
+    CORS(app)
 
 ensure_upload_folder()
 
