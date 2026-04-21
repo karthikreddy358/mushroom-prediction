@@ -1,5 +1,9 @@
 import os
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+except ModuleNotFoundError:
+    load_dotenv = None
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -10,9 +14,30 @@ ENV_CANDIDATES = [
     os.path.join(BASE_DIR, "uploads", ".env"),
 ]
 
+
+def _load_env_file(env_path: str) -> None:
+    if not os.path.exists(env_path):
+        return
+
+    with open(env_path, "r", encoding="utf-8") as env_file:
+        for raw_line in env_file:
+            line = raw_line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+
+            if key and key not in os.environ:
+                os.environ[key] = value
+
+
 for env_path in ENV_CANDIDATES:
-    if os.path.exists(env_path):
+    if load_dotenv and os.path.exists(env_path):
         load_dotenv(env_path, override=False)
+    else:
+        _load_env_file(env_path)
 
 
 def _normalize_supabase_url(value: str | None) -> str:

@@ -1,0 +1,564 @@
+/* ===== Environment Recommendation Page ===== */
+.environment-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+.env-header {
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.env-header-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+}
+
+.logo-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.env-nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  color: #6b7280;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: #22c55e;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.user-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a3a3a3;
+  cursor: pointer;
+  transition: color 0.2s;
+  background: transparent;
+  border: none;
+}
+
+.user-icon:hover {
+  color: #22c55e;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  width: 260px;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  z-index: 20;
+}
+
+.profile-title {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.profile-email {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+  word-break: break-all;
+}
+
+.logout-btn {
+  width: 100%;
+  background: #7f1d1d;
+  color: #ffffff;
+  border: 1px solid #b91c1c;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: #991b1b;
+}
+
+/* ===== Main Content ===== */
+.env-main {
+  flex: 1;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.env-container {
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* ===== Page Header Section ===== */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.page-header .subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.header-icon {
+  font-size: 3rem;
+  display: block;
+  margin-top: 1rem;
+}
+
+/* ===== Stage Selector ===== */
+.stage-selector {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.stage-selector h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.stage-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stage-btn {
+  background: #111111;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #6b7280;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.stage-btn:hover {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.stage-btn.active {
+  background: #22c55e;
+  color: #000000;
+  border-color: #22c55e;
+}
+
+/* ===== Content Grid ===== */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.1);
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #22c55e;
+}
+
+/* ===== Stage Card ===== */
+.stage-card {
+  grid-column: 1;
+}
+
+.stage-badge {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stage-badge.early {
+  background: rgba(134, 239, 172, 0.2);
+  color: #86efac;
+}
+
+.stage-badge.medium {
+  background: rgba(253, 230, 138, 0.2);
+  color: #fde68a;
+}
+
+.stage-badge.harvest {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.stage-description {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== Conditions Card ===== */
+.conditions-card {
+  grid-column: 2;
+}
+
+.condition-item {
+  margin-bottom: 2rem;
+}
+
+.condition-item:last-child {
+  margin-bottom: 0;
+}
+
+.condition-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.condition-icon {
+  font-size: 1.5rem;
+}
+
+.condition-name {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.condition-values {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ideal-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.range {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* ===== Recommendation Card ===== */
+.recommendation-card {
+  grid-column: 3;
+}
+
+.recommendation-box {
+  background: rgba(34, 197, 94, 0.1);
+  border-left: 4px solid #22c55e;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.rec-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.recommendation-box p {
+  color: #e5e7eb;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ===== Indicators Card ===== */
+.indicators-card {
+  grid-column: 1 / 3;
+}
+
+.gauge-item {
+  margin-bottom: 2rem;
+}
+
+.gauge-item:last-child {
+  margin-bottom: 0;
+}
+
+.gauge-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.gauge-label span:first-child {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.gauge-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.gauge-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gauge-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.temp-gauge {
+  background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+}
+
+.humidity-gauge {
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.gauge-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* ===== Tips Card ===== */
+.tips-card {
+  grid-column: 3;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.tips-list li:last-child {
+  margin-bottom: 0;
+}
+
+.tip-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ===== Footer ===== */
+.env-footer {
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.env-footer p {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stage-card,
+  .conditions-card,
+  .recommendation-card,
+  .indicators-card,
+  .tips-card {
+    grid-column: auto !important;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .env-header-container {
+    padding: 1rem;
+  }
+
+  .env-nav {
+    gap: 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .env-main {
+    padding: 2rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .env-header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .env-nav {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .stage-buttons {
+    flex-direction: column;
+  }
+
+  .stage-btn {
+    width: 100%;
+  }
+}

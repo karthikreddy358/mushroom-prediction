@@ -15,7 +15,7 @@ export const authAPI = {
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.detail || 'Login failed')
+      throw new Error(error.error || error.detail || 'Login failed')
     }
 
     return response.json()
@@ -36,7 +36,7 @@ export const authAPI = {
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.detail || 'Registration failed')
+      throw new Error(error.error || error.detail || 'Registration failed')
     }
 
     return response.json()
@@ -71,4 +71,41 @@ export const authAPI = {
   isLoggedIn() {
     return !!this.getToken()
   }
+}
+
+export const predictAPI = {
+  async analyzeImage(file, token) {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    const response = await fetch(`${API_URL}/predict`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      throw new Error(data.error || 'Image analysis failed')
+    }
+
+    return data
+  },
+
+  async getHistory(token) {
+    const response = await fetch(`${API_URL}/history`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    const data = await response.json()
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to fetch analysis history')
+    }
+
+    return data.history || []
+  },
 }

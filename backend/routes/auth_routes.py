@@ -38,7 +38,10 @@ def register():
 
     hashed_password = generate_password_hash(password)
 
-    create_user(name, email, hashed_password)
+    try:
+        create_user(name, email, hashed_password)
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 503
 
     return jsonify({"message": "User registered successfully"})
 
@@ -53,7 +56,10 @@ def login():
     if not email or not password:
         return jsonify({"error": "email and password are required"}), 400
 
-    user = get_user(email)
+    try:
+        user = get_user(email)
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 503
 
     if user.data:
         stored_user = user.data[0]
@@ -90,7 +96,10 @@ def me():
     except BadSignature:
         return jsonify({"error": "Invalid token"}), 401
 
-    user = get_user(payload.get("email"))
+    try:
+        user = get_user(payload.get("email"))
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 503
     if not user.data:
         return jsonify({"error": "User not found"}), 404
 

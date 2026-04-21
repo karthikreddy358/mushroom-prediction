@@ -63,6 +63,7 @@
 .header-right {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -136,10 +137,52 @@
   color: #a3a3a3;
   cursor: pointer;
   transition: color 0.2s;
+  background: transparent;
+  border: none;
 }
 
 .user-icon:hover {
   color: #22c55e;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  width: 260px;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  z-index: 20;
+}
+
+.profile-title {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.profile-email {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+  word-break: break-all;
+}
+
+.logout-btn {
+  width: 100%;
+  background: #7f1d1d;
+  color: #ffffff;
+  border: 1px solid #b91c1c;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #991b1b;
 }
 
 /* ===== Hero Section ===== */
@@ -233,6 +276,12 @@
   font-weight: 600;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+.empty-preview {
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 /* ===== Stats Section ===== */
@@ -501,8 +550,9 @@
 
 .preview-image img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
 }
 
 .harvest-badge {
@@ -557,6 +607,28 @@
 .drop-hint {
   color: #6b7280;
   font-size: 0.75rem;
+}
+
+.upload-btn {
+  margin-top: 1rem;
+  background: #22c55e;
+  color: #04110a;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.upload-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.analysis-error {
+  color: #f87171;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 /* Environmental */
@@ -727,6 +799,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.history-empty {
+  color: #9ca3af;
 }
 
 .history-item {
